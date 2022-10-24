@@ -18,13 +18,13 @@ COPY ./scripts /scripts
 RUN chmod +x ./scripts
 
 RUN conda env create -f /backend/requirements.yml
-ENV PATH /opt/conda/envs/motion_assignment/bin:$PATH
+ENV PATH /opt/conda/envs/luna_tuna/bin:$PATH
 RUN conda update -n base -c defaults conda
 RUN echo "source activate motion_assignment">~/.bashrc
 
-WORKDIR /frontend
-COPY ./frontend/package.json /frontend/
-COPY ./frontend/package-lock.json /frontend/
+WORKDIR /frontend/luna-app
+COPY ./frontend/luna-app/package.json /frontend/luna-app/
+COPY ./frontend/luna-app/package-lock.json /frontend/luna-app/
 RUN npm install
 COPY ./frontend /frontend
 RUN npm run build
