@@ -14,7 +14,7 @@ class Review(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    liked_by = models.OneToOneField(User, on_delete=models.CASCADE)
+    liked_by = models.OneToOneField(User, related_name='liked_reviews', on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
@@ -23,4 +23,4 @@ class Comment(models.Model):
     text_content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    liked_by = models.OneToOneField(User, on_delete=models.CASCADE)
+    liked_by = models.OneToOneField(User, related_name='liked_comments', on_delete=models.CASCADE)
