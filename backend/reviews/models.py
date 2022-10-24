@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.core import validators
 from django.db import models
 
-from backend.restaurants.models import Restaurant
+from restaurants.models import Restaurant
 
 User = get_user_model()
 
