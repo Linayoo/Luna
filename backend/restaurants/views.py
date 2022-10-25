@@ -7,3 +7,6 @@ from restaurants.serializers import RestaurantSerializer
 class RestaurantListCreate(ListCreateAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
+
+# Get details of a restaurant by ID
+class

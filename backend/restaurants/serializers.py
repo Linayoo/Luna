@@ -8,7 +8,7 @@ from restaurants.models import Restaurant
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
-        fields = ['__all__']
+        fields = '__all__'
 
     """
     def to_representation(self, instance):
