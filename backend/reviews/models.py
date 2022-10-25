@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Review(models.Model):
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
     text_content = models.TextField()
     rating = models.IntegerField(validators=[validators.MinValueValidator(1), validators.MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
