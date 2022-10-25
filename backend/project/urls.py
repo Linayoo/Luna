@@ -7,6 +7,7 @@ urlpatterns = [
     path("backend/api/restaurants/", include('restaurants.urls')),
     path("backend/", include('users.urls')),
     path("backend/api/reviews/", include('reviews.urls')),
+    path("backend/api/review/", include('reviews.urls')),
 
     # JWT
     path('backend/token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

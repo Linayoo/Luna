@@ -1,8 +1,9 @@
 from django.urls import path
-from reviews.views import ReviewCreate
+from reviews.views import ReviewCreate, CommentCreate
 
 urlpatterns = [
     path('new/<int:restaurant_id>/', ReviewCreate.as_view()),
+    path('comment/new/<int:review_id>/', CommentCreate.as_view()),
 ]
 
 # /api/reviews/new/<int:restaurant_id>/ POST: Create new review for a restaurant.
