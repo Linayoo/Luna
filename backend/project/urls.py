@@ -5,6 +5,7 @@ from rest_framework_simplejwt import views
 urlpatterns = [
     path("backend/api/admin/", admin.site.urls),
     path("backend/api/restaurants/", include('restaurants.urls')),
+    path("backend/", include('users.urls')),
     path("backend/api/reviews/", include('reviews.urls')),
 
     # JWT
