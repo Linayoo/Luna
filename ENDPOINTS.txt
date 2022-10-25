@@ -34,6 +34,7 @@ REVIEWS
     /api/reviews/new/<int:restaurant_id>/ POST: Create new review for a restaurant.
     /api/reviews/restaurant/<int:restaurant_id>/ GET: Get the list of the reviews for a single restaurant.
     /api/reviews/user/<int:user_id>/ GET: Get the list of the reviews by a single user.
+
     /api/reviews/<int:review_id>/ GET: Get a specific review by ID and display all the information.
     /api/reviews/<int:review_id>/ PATCH: Update a specific review (only by owner).
     /api/reviews/<int:review_id>/ DELETE: Delete a specific review (only by owner).
