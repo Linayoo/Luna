@@ -6,7 +6,7 @@ services:
       - ./envs/prod.env
     command: "sh /scripts/prod.sh"
     volumes:
-      - static_files:./static-files
+      - static_files:/static-files
       - media_files:/media-files
       - build:/frontend/build
     depends_on:
