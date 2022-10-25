@@ -9,4 +9,3 @@ class RestaurantListCreate(ListCreateAPIView):
     serializer_class = RestaurantSerializer
 
 # Get details of a restaurant by ID
-class

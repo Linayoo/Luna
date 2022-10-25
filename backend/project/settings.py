@@ -25,8 +25,8 @@ SECRET_KEY = "django-insecure-f31-d1bc8hq@=rmu^)_cfowt10u8f#h9^@azpyc3a=smg#g=#)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
+CSRF_TRUSTED_ORIGINS = ['http://164.92.143.227', 'https://luna-tuna.propulsion-learn.ch']
 
 # Application definition
 
@@ -53,6 +53,13 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+# CORS_ALLOWED_ORIGINS = [
+#     "https://luna-tuna.propulsion-learn.ch",
+#     'http://164.92.143.227',
+#     "http://localhost:3000",
+#     "http://127.0.0.1:8001"
+# ]
 
 ROOT_URLCONF = "project.urls"
 
