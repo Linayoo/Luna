@@ -20,7 +20,7 @@ RUN chmod +x ./scripts
 RUN conda env create -f /backend/requirements.yml
 ENV PATH /opt/conda/envs/luna_tuna/bin:$PATH
 RUN conda update -n base -c defaults conda
-RUN echo "source activate motion_assignment">~/.bashrc
+RUN echo "source activate luna_tuna">~/.bashrc
 
 WORKDIR /frontend
 COPY ./frontend/package.json /frontend/

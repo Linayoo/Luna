@@ -144,3 +144,9 @@ GitHub.sublime-settings
 
 ## frontend part
 # refers to the gitignore inside of frontend
+/.idea/dataSources.xml
+/.idea/luna-and-tuna.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
