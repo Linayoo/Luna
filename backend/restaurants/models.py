@@ -1,8 +1,8 @@
-from datetime import datetime
-
+from django.contrib.auth import get_user_model
 from django.db import models
 
-from users.models import User
+
+User = get_user_model()
 
 
 class Restaurant(models.Model):
@@ -33,4 +33,4 @@ class Restaurant(models.Model):
     opening_hours = models.TextField()
     price_level = models.CharField(max_length=10, choices=PRICES)
     image = models.FileField(upload_to='uploads/', blank=True)
-    created = models.DateTimeField(default=datetime.now(), blank=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True)
