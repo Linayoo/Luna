@@ -7,8 +7,6 @@ from reviews.serializers import ReviewSerializer, CommentSerializer
 
 # POST -> create a review for a certain restaurant
 class ReviewCreate(ListCreateAPIView):
-    # /api/reviews/new/<int:restaurant_id>/ POST: Create new review for a restaurant.
-
     serializer_class = ReviewSerializer
     queryset = Restaurant.objects.all()
     lookup_url_kwarg = 'restaurant_id'
@@ -21,10 +19,18 @@ class ReviewCreate(ListCreateAPIView):
         return Response(self.get_serializer(instance=review).data)
 
 
+# GET -> Get the list of the reviews for a single restaurant
+class ReviewList(ListCreateAPIView):
+    serializer_class = ReviewSerializer
+    lookup_url_kwarg = 'restaurant_id'
+
+    def get_queryset(self):
+        restaurant_id = self.kwargs.get("restaurant_id")
+        return Review.objects.filter(restaurant__id=restaurant_id).order_by("-created")
+
+
 # POST -> create a comment for a certain review
 class CommentCreate(ListCreateAPIView):
-    # /api/review/comment/new/< int: review_id >/ POST: Comment on the review.
-
     serializer_class = CommentSerializer
     queryset = Review.objects.all()
     lookup_url_kwarg = 'review_id'
