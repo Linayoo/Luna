@@ -1,12 +1,14 @@
 import { LoginContainer } from "./Login.styles"
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useNavigate} from "react-router-dom"
 import { LoginBtn, FormContainer } from "./Login.styles";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,7 +24,7 @@ const Login = () => {
       
     const handleSubmit = (e) => {
         e.preventDefault()
-        const url = ""
+        const url = "https://luna-tuna.propulsion-learn.ch/backend/token/"
         
         const jsBody = {
             email: email,
@@ -36,6 +38,18 @@ const Login = () => {
             }),
            body: JSON.stringify(jsBody)
         }
+
+        fetch(url, config).then((response) => {
+            if (response.status === 200) {
+                    navigate('/home')
+                    return response.json()
+                } else {
+                    alert('Something went wrong')
+                }
+          }).then(data => {
+            console.log(data)
+          }
+          )
     
     };
     return (
@@ -46,7 +60,6 @@ const Login = () => {
                 <h1>LOGIN</h1>
                 <FormContainer>
                 <input 
-                    autoComplete="off"
                     type="text" 
                     name={"email"} 
                     placeholder="Username"
