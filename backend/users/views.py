@@ -30,7 +30,7 @@ class GetUserProfile(RetrieveUpdateAPIView):
 class ListAllUsers(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
 
 # /api/users/?search=<str:search_string>/
