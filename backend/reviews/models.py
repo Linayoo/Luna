@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Review(models.Model):
-    creator = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    creator = models.ForeignKey(to=User, related_name='reviews', on_delete=models.CASCADE)
     text_content = models.TextField()
     rating = models.IntegerField(validators=[validators.MinValueValidator(1), validators.MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
@@ -17,8 +17,8 @@ class Review(models.Model):
 
 
 class Comment(models.Model):
-    commented_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    commented_on = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='review_comments')
+    commented_by = models.ForeignKey(to=User, related_name='comments', on_delete=models.CASCADE)
+    commented_on = models.ForeignKey(to=Review, related_name='review_comments', on_delete=models.CASCADE)
     text_content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
