@@ -35,7 +35,7 @@ class ListAllUsers(ListAPIView):
 
 
 # /api/users/?search=<str:search_string>/
-# GET: Search for a user
+# GET: Search for a user (retrieve all the users that include search_string)
 class SearchUser(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
