@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-f31-d1bc8hq@=rmu^)_cfowt10u8f#h9^@azpyc3a=smg#g=#)
 DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
-CSRF_TRUSTED_ORIGINS = ['http://164.92.143.227', 'https://luna-tuna.propulsion-learn.ch']
+CSRF_TRUSTED_ORIGINS = ['http://164.92.143.227', 'https://luna-tuna.propulsion-learn.ch', "http://localhost:3000"]
 
 # Application definition
 
@@ -177,6 +177,4 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=5)
 }
 
-CSRF_TRUSTED_ORIGINS = ['http://142.93.98.85', 'https://motion-group-three.propulsion-learn.ch',
-                        "http://localhost:3000"]
 CORS_ALLOW_ALL_ORIGINS = True
