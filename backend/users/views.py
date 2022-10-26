@@ -1,14 +1,8 @@
-import logging
-
 from rest_framework import filters
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView, RetrieveAPIView, get_object_or_404
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-
 from users.models import User
 from users.serializers import UserSerializer
-
-
-logger = logging.getLogger('django')
 
 
 # /api/me/
@@ -37,7 +31,7 @@ class ListAllUsers(ListAPIView):
 
 
 # /api/users/?search=<str:search_string>/
-# GET: Search for a user
+# GET: Search for a user (retrieve all the users that include search_string)
 class SearchUser(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
