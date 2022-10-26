@@ -1,13 +1,11 @@
 import logging
-
+from django.contrib.auth import get_user_model
 from rest_framework import filters
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView, RetrieveAPIView, get_object_or_404
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-
-from users.models import User
 from users.serializers import UserSerializer
 
-
+User = get_user_model()
 logger = logging.getLogger('django')
 
 
