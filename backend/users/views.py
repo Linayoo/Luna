@@ -1,8 +1,11 @@
+from django.contrib.auth import get_user_model
 from rest_framework import filters
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView, RetrieveAPIView, get_object_or_404
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from users.models import User
+from rest_framework.permissions import IsAuthenticated
 from users.serializers import UserSerializer
+
+
+User = get_user_model()
 
 
 # /api/me/
@@ -27,7 +30,6 @@ class GetUserProfile(RetrieveUpdateAPIView):
 class ListAllUsers(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAdminUser]
 
 
 # /api/users/?search=<str:search_string>/
