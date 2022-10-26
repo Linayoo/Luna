@@ -3,9 +3,6 @@ from restaurants.models import Restaurant
 from users.serializers import UserSerializer
 
 
-# from users.serializers import UserSerializer (nested user serializer)
-
-
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
