@@ -1,7 +1,11 @@
-from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from django.contrib.auth import get_user_model
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, ListCreateAPIView
 from restaurants.models import Restaurant
 from restaurants.permissions import IsObjectOwnerOrAdmin
 from restaurants.serializers import RestaurantSerializer
+
+
+User = get_user_model()
 
 
 # /api/restaurants/
@@ -26,6 +30,17 @@ class RestaurantDetailsUpdateDelete(RetrieveUpdateDestroyAPIView):
     serializer_class = RestaurantSerializer
     queryset = Restaurant.objects.all()
     permission_classes = [IsObjectOwnerOrAdmin]
+
+
+# GET: Get the all the restaurants created by a specific user in chronological order
+# /api/restaurants/user/<int:user_id>/
+class GetUserCreatedRestaurant(ListCreateAPIView):
+    serializer_class = RestaurantSerializer
+    lookup_url_kwarg = 'user_id'
+
+    def get_queryset(self):
+        user_id = self.kwargs.get("user_id")
+        return Restaurant.objects.filter(creator=user_id).order_by("-created")
 
 
 # /api/restaurants/category/<int:category_id>/

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 from users.models import User
@@ -31,3 +33,4 @@ class Restaurant(models.Model):
     opening_hours = models.TextField()
     price_level = models.CharField(max_length=10, choices=PRICES)
     image = models.FileField(upload_to='uploads/', blank=True)
+    created = models.DateTimeField(default=datetime.now(), blank=True)
