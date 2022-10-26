@@ -17,5 +17,3 @@ class IsObjectOwnerOrAdmin(BasePermission):
             return True
         else:
             return False
-
-

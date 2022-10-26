@@ -1,13 +1,8 @@
-import logging
-
 from rest_framework import filters
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView, RetrieveAPIView, get_object_or_404
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from users.models import User
 from users.serializers import UserSerializer
-
-
-# logger = logging.getLogger('django')  # This was implemented for django debugging
 
 
 # /api/me/

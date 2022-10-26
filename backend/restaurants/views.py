@@ -1,6 +1,4 @@
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
 from restaurants.models import Restaurant
 from restaurants.permissions import IsObjectOwnerOrAdmin
 from restaurants.serializers import RestaurantSerializer
