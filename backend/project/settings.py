@@ -61,10 +61,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
- "https://luna-tuna.propulsion-learn.ch",
- 'http://164.92.143.227',
- "http://localhost:3000",
- "http://127.0.0.1:8001"
+    "https://luna-tuna.propulsion-learn.ch",
+    'http://164.92.143.227',
+    "http://localhost:3000",
+    "http://127.0.0.1:8001"
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -132,7 +132,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-file
 print('static root', STATIC_ROOT)
 
 MEDIA_URL = "/media-files/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files') if DEBUG else '/media-files/'
+MEDIA_ROOT = os.path.join(BASE_DIR,
+                          'media-files') if DEBUG else 'https://luna-tuna.propulsion-learn.ch/media-files/'
 print('media root', MEDIA_ROOT)
 
 # Default primary key field type
