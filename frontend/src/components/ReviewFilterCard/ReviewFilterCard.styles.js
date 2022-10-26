@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 export const ReviewCardContainer = styled.div`
 background-color: white;
-width: 271px;
-height: 410px;
+width: 650px;
+height: 188px;
 padding: 11px;
-border-top: #E47D31 8px solid;
 border-color: #EBEBEB 1px solid;
 border-radius: 3px;
+margin-top: 15px;
 
 h3, h4 {
    color: #E47D31;
@@ -29,6 +29,8 @@ hr {
     background-color: #cccccc4d;
     border: none;
 }
+
+
 `;
 
 export const BtnContainer = styled.div`
@@ -36,6 +38,8 @@ display: flex;
 justify-content: center;
 margin-top: 20px;
 margin-bottom: 17px;
+
+
 button {
  background-color: rgba(145, 145, 145, 0.6);
  color: white;
@@ -53,8 +57,22 @@ font-weight: 300;
 font-size: 16px;
 line-height: 18px;
 }
-button:hover {
-    background-color: rgba(145, 145, 145, 0.395) ;
+
+`;
+
+
+export const ViewAllBtn = styled.div`
+button {
+    background-color: white;
+    border: none;
+    color: #E47D31;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    width: 134px;
+    margin-left: 235px;
 }
 `;
 
@@ -89,8 +107,13 @@ export const StyledP = styled.div`
 
 export const StyledHeader = styled.div`
     display: flex;
+    align-items: center;
     height: 60px;
     margin-left: -11px;
+    div:nth-child(3) {
+        margin-left: 15px;
+        width: 150px;
+    }
     img {
         margin-right: 5px;
         margin-top: -11px;
@@ -101,23 +124,32 @@ export const StyledHeader = styled.div`
         font-size: 14px;
         font-weight: 700;
         margin-top: 5px;
-    }
+        height: 40px;
+    };
 `;
 
-export const Footer = styled.div`
-    p {
-        padding-bottom: 10px;
-        font-family: 'Helvetica';
-        font-style: normal;
-        font-weight: 300;
-        font-size: 14px;
-        line-height: 16px;
-    }
+
+export const TimeStamp = styled.div`
+   p {
+    height: 70px;
+    margin-left:180px;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+   }
 `;
+
 
 
 export const MainStyle = styled.div`
-    font-size: 14px;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 18px;
+
     h3 {
         padding-bottom: 10px;
     }

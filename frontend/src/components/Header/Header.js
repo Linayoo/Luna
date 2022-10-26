@@ -10,7 +10,7 @@ const Header = () => {
         
         <HeaderContainer>
             <Logo>
-            <img src="/images/icons/logo.png"/>
+            <img src="/images/icons/logo.svg"/>
             </Logo>
 
             <LinkContainer>
