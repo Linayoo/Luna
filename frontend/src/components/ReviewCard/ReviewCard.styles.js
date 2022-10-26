@@ -47,6 +47,11 @@ button {
  display: flex;
  justify-content: center;
  align-items: center;
+ font-family: 'Helvetica';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 18px;
 }
 button:hover {
     background-color: rgba(145, 145, 145, 0.395) ;
