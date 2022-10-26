@@ -60,12 +60,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://luna-tuna.propulsion-learn.ch",
-#     'http://164.92.143.227',
-#     "http://localhost:3000",
-#     "http://127.0.0.1:8001"
-# ]
+CORS_ALLOWED_ORIGINS = [
+ "https://luna-tuna.propulsion-learn.ch",
+ 'http://164.92.143.227',
+ "http://localhost:3000",
+ "http://127.0.0.1:8001"
+]
 
 ROOT_URLCONF = "project.urls"
 
