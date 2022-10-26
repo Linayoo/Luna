@@ -25,8 +25,8 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     # respond with user and review details:
-    def to_representation(self, instance):
+    """def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['commented_by'] = UserSerializer(instance.commented_by).data
         representation['commented_on'] = ReviewSerializer(instance.commented_on).data
-        return representation
+        return representation"""
