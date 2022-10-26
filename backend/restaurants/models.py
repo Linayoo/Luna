@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Restaurant(models.Model):
     CATEGORIES = [
@@ -17,6 +19,7 @@ class Restaurant(models.Model):
     ]
 
     name = models.CharField(max_length=75)
+    creator = models.ForeignKey(User, related_name='created_restaurants', on_delete=models.CASCADE, null=True)
     category = models.CharField(max_length=100, choices=CATEGORIES)
     country = models.CharField(max_length=100)
     street = models.CharField(max_length=250)
