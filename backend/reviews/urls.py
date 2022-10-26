@@ -22,7 +22,7 @@ urlpatterns = [
 # /api/reviews/restaurant/<int:restaurant_id>/ GET: Get the list of the reviews for a single restaurant - WORKS
 # /api/reviews/user/<int:user_id>/ GET: Get the list of the reviews by a single user - WORKS
 # /api/reviews/<int:review_id>/ DELETE: Delete a specific review (only by owner) - WORKS
-# /api/reviews/like/<int:review_id>/ POST: Like a review / toggle like for a review -
+# /api/reviews/like/<int:review_id>/ POST: Like a review / toggle like for a review - WORKS.
 
 
 # COMMENT
