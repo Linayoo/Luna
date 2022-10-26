@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -27,7 +26,7 @@ SECRET_KEY = "django-insecure-f31-d1bc8hq@=rmu^)_cfowt10u8f#h9^@azpyc3a=smg#g=#)
 DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
-CSRF_TRUSTED_ORIGINS = ['http://164.92.143.227', 'https://luna-tuna.propulsion-learn.ch']
+CSRF_TRUSTED_ORIGINS = ['http://164.92.143.227', 'https://luna-tuna.propulsion-learn.ch', "http://localhost:3000"]
 
 # Application definition
 
@@ -43,9 +42,15 @@ INSTALLED_APPS = [
     "users",
     "restaurants",
     "reviews",
+
+    # frameworks
+    "rest_framework",
+    "drf_yasg",
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -55,12 +60,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://luna-tuna.propulsion-learn.ch",
-#     'http://164.92.143.227',
-#     "http://localhost:3000",
-#     "http://127.0.0.1:8001"
-# ]
+CORS_ALLOWED_ORIGINS = [
+ "https://luna-tuna.propulsion-learn.ch",
+ 'http://164.92.143.227',
+ "http://localhost:3000",
+ "http://127.0.0.1:8001"
+]
 
 ROOT_URLCONF = "project.urls"
 
@@ -82,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -97,7 +101,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -110,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -121,7 +123,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -175,3 +176,5 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=5)
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
