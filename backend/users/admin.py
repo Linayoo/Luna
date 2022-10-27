@@ -13,7 +13,7 @@ class UserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide', ),
-            'fields': ('email', 'username', 'password1', 'password2')
+            'fields': ('email', 'username', 'password1', 'password2', 'profile_pic')
         }),
     )
 
@@ -23,7 +23,7 @@ class UserAdmin(UserAdmin):
         ('Personal info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions')}),
         ('Important dates', {'fields': ('last login', 'date_joined')}),
-        ('Social Status', {'fields': ('following', 'followers')})
+        ('Profile', {'fields': 'profile_pic'})
     )
 
     # fields which are shown when looking at a list of instances
