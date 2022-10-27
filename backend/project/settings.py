@@ -131,9 +131,8 @@ STATIC_URL = "/static-files/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-files/'
 print('static root', STATIC_ROOT)
 
-MEDIA_URL = "/media-files/"
-MEDIA_ROOT = os.path.join(BASE_DIR,
-                          'media-files') if DEBUG else 'https://luna-tuna.propulsion-learn.ch/media-files/'
+MEDIA_URL = "/media-files/" if DEBUG else 'https://luna-tuna.propulsion-learn.ch/media-files/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files') if DEBUG else '/media-files'
 print('media root', MEDIA_ROOT)
 
 # Default primary key field type
