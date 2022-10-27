@@ -32,7 +32,7 @@ export const SearchContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    display: ;
+    //display: ;
     z-index: 1;
  }
 

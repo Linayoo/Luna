@@ -1,9 +1,33 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
-import { SearchBtn, SearchContainer, FormContainer, BestRated} from "./homepage.styles"
+import { useSelector } from "react-redux";
+import { SearchBtn, SearchContainer, FormContainer, BestRated } from "./homepage.styles"
 
 
 const HomePage = () => {
+
+    //const localToken = localStorage.getItem("token");
+    const token = useSelector(state => state.login.token)
+    console.log(token)
+
+    // Get all restaurants
+
+    const fetchRestaurants = () => {
+        const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/"
+        const config = {
+            method: "GET",
+            headers: new Headers({
+                "Authorization": `Bearer ${token}`
+            })
+        }
+        fetch(url, config)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => console.log(error))
+    }
+
     return (
         <div>
             <Header></Header>
@@ -25,6 +49,7 @@ const HomePage = () => {
             </SearchContainer>
             <BestRated>
             <p>BEST RATED RESTAURANTS</p>
+            <button onClick={fetchRestaurants}>My Kebab Place</button>
             </BestRated>
             <Footer></Footer>
         </div>
