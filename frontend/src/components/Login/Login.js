@@ -2,7 +2,7 @@ import { LoginContainer } from "./Login.styles"
 import { useDispatch } from "react-redux";
 import { addUser, addToken, addRefreshToken } from "../../redux/loginSlice";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { LoginBtn, FormContainer } from "./Login.styles";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";

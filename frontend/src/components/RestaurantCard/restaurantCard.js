@@ -1,12 +1,15 @@
 import { MainStyle, StyledHeader, RestaurantCardContainer} from "./RestaurantCard.styles"
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ name, address, image }) => {
+
+    console.log(image)
+
       return (
         <RestaurantCardContainer>
             <StyledHeader>
                 <div>
-                <p>Restaurant Name</p>
-                <p>Adress</p>
+                <p>{name}</p>
+                <p>{address}</p>
                 </div>
 
             </StyledHeader>
@@ -16,7 +19,7 @@ const RestaurantCard = () => {
                 <img src="/images/icons/star-full.png" /> 
                 </div>
             <MainStyle>
-            <img src="/images/icons/rest.png"/>           
+            <img src={image} />           
             </MainStyle>
         </RestaurantCardContainer>
       )

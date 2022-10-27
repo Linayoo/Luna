@@ -2,11 +2,13 @@ import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import { Create, Flex, InputFlex, SearchBtn, Background, Btn } from "./create-restaurant.styles"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const CreateRestaurant = () => {
 
     const [restaurantImage, setRestaurantImage] = useState(null)
+    const [created, setCreated] = useState(false)
     const [restaurantData, setRestaurantData] = useState(
         {name: "",
         category: "",
@@ -21,7 +23,7 @@ const CreateRestaurant = () => {
         price_level: ""
         }
     )
-
+    const navigate = useNavigate();
     const localToken = localStorage.getItem("token");
     const handleChange = (event) => {
         setRestaurantData(prevFormData => {
@@ -42,7 +44,6 @@ const CreateRestaurant = () => {
         e.preventDefault();
         const formData = new FormData();       
         formData.append("name", restaurantData.name);
-        //formData.append("creator", user);
         formData.append("category", restaurantData.category);
         formData.append("country", restaurantData.country);
         formData.append("street", restaurantData.street);
@@ -65,6 +66,8 @@ const CreateRestaurant = () => {
         fetch(url, config)
             .then(response => response.json())
             .then(data => {
+                setCreated(true)
+                setTimeout(() => navigate('/home'), 2000)
                 return data.response
             })
             .catch(error => console.log(error))
@@ -156,7 +159,7 @@ const CreateRestaurant = () => {
                      </Btn> */}
                 </label>
                 <SearchBtn>
-                <button type={"submit"} onClick={createRestaurant}>Create</button>
+                <button type={"submit"} onClick={createRestaurant}>{created ? 'SUCCESS!' : 'Created'}</button>
                 </SearchBtn>
             </form>
             </Flex>
