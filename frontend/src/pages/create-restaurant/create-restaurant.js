@@ -54,7 +54,7 @@ const CreateRestaurant = () => {
         formData.append("opening_hours", restaurantData.opening_hours);
         formData.append("price_level", restaurantData.price_level);
         formData.append("image", restaurantImage);
-        const url = "http://localhost:8001/backend/api/restaurants/new/"
+        const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/new/"
         const config = {
             method: "POST",
             headers: {           

@@ -12,8 +12,7 @@ const HomePage = () => {
     // Get all restaurants
 
     const fetchRestaurants = () => {
-        //const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/"
-        const url = "http://localhost:8001/backend/api/restaurants/"
+        const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/"
         const config = {
             method: "GET",
             headers: new Headers({
