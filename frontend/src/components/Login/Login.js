@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom"
 import { LoginBtn, FormContainer } from "./Login.styles";
+import { addToken } from "../../redux/loginSlice";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
@@ -47,11 +48,14 @@ const Login = () => {
                     alert('Something went wrong')
                 }
           }).then(data => {
+            localStorage.setItem("token", data.access)
+            setToken(data.access)
+            dispatch(addToken(data.access))
             console.log(data)
           }
-          )
-    
+        )
     };
+    console.log(token)
     return (
         <div>
             <Header></Header>
