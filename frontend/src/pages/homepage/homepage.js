@@ -1,12 +1,15 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import { SearchBtn, SearchContainer, FormContainer, BestRated } from "./homepage.styles"
+import { useState } from "react"
+import RestaurantCard from "../../components/RestaurantCard/restaurantCard"
 
 
 const HomePage = () => {
 
+    const [restaurants, setRestaurants] = useState([]);
+    console.log(restaurants)
     const localToken = localStorage.getItem("token");
-    // const token = useSelector(state => state.login.token) -> when you refresh the page, you loose the store state!
     console.log(localToken)
 
     // Get all restaurants
@@ -21,9 +24,7 @@ const HomePage = () => {
         }
         fetch(url, config)
             .then(response => response.json())
-            .then(data => {
-                console.log(data)
-            })
+            .then(data => setRestaurants(data))
             .catch(error => console.log(error))
     }
 
@@ -49,6 +50,7 @@ const HomePage = () => {
             <BestRated>
             <p>BEST RATED RESTAURANTS</p>
             <button onClick={fetchRestaurants}>My Kebab Place</button>
+            {restaurants.map(elem => <RestaurantCard name={elem.name} address={elem.street} image={elem.image}/>)}
             </BestRated>
             <Footer></Footer>
         </div>
