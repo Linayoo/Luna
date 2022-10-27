@@ -21,6 +21,9 @@ class CreateNewRestaurant(CreateAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(creator=self.request.user)
+
 
 # /api/restaurants/<int:id>/
 # GET: Get the details of a restaurant by providing the id of the restaurant
