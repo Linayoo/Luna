@@ -24,7 +24,7 @@ const Login = () => {
       
     const handleSubmit = (e) => {
         e.preventDefault()
-        const url = "https://luna-tuna.propulsion-learn.ch/backend/token/"
+        const url = "http://localhost:8001/backend/token/"
         
         const jsBody = {
             email: email,

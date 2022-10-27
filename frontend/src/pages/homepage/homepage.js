@@ -1,23 +1,23 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
-import { useSelector } from "react-redux";
 import { SearchBtn, SearchContainer, FormContainer, BestRated } from "./homepage.styles"
 
 
 const HomePage = () => {
 
-    //const localToken = localStorage.getItem("token");
-    const token = useSelector(state => state.login.token)
-    console.log(token)
+    const localToken = localStorage.getItem("token");
+    // const token = useSelector(state => state.login.token) -> when you refresh the page, you loose the store state!
+    console.log(localToken)
 
     // Get all restaurants
 
     const fetchRestaurants = () => {
-        const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/"
+        //const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/"
+        const url = "http://localhost:8001/backend/api/restaurants/"
         const config = {
             method: "GET",
             headers: new Headers({
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${localToken}`
             })
         }
         fetch(url, config)

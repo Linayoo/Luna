@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const LoginSlice = createSlice({
     name: 'login',
     initialState: {
+        // no user saved!!!
         user: undefined,
         token: undefined,
         refreshToken: undefined
@@ -12,10 +13,10 @@ export const LoginSlice = createSlice({
             state.user = action.payload
        },
        addToken: (state, action) => {
-        state.token = action.payload;
+            state.token = action.payload;
        },
        addRefreshToken: (state, action) => {
-        state.refreshToken = action.payload;
+            state.refreshToken = action.payload;
        }
 }});        
 
