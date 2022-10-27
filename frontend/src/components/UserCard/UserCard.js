@@ -1,12 +1,13 @@
 import { MainStyle, StyledHeader, ReviewCardContainer, Background  } from "./UserCard-styles"
 
-const UserCard = () => {
+const UserCard = (props) => {
+
       return (
         <ReviewCardContainer>
             <StyledHeader>
                 <img src="/images/icons/profile.png"/>
                 <div>
-                <h3>Laurent H.</h3>
+                <h3>{props.userProps.first_name + " " + props.userProps.last_name}</h3>
                 <p>6 reviews in total</p>
                 </div>
             </StyledHeader>
