@@ -5,20 +5,19 @@ export const LoginSlice = createSlice({
     initialState: {
         user: undefined,
         token: undefined,
-       
-        
+        refreshToken: undefined
     },
     reducers: {
        addUser: (state, action) => {
             state.user = action.payload
        },
        addToken: (state, action) => {
-        state.token = action.payload
-        console.log("State-token: " + state.token);
+        state.token = action.payload;
        },
-}});
+       addRefreshToken: (state, action) => {
+        state.refreshToken = action.payload;
+       }
+}});        
 
-
-
-export const { addUser, addToken} = LoginSlice.actions;
+export const { addUser, addToken, addRefreshToken } = LoginSlice.actions;
 export default LoginSlice.reducer;
