@@ -13,7 +13,6 @@ const Login = () => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [token, setToken] = useState('');
 
     const handleEmailChange = (e) => {
       setEmail(e.target.value)
@@ -26,10 +25,12 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const url = "https://luna-tuna.propulsion-learn.ch/backend/token/"
+        
         const jsBody = {
             email: email,
             password: password
         }
+        
         const config = {
             method: "POST",
             headers: new Headers ({
@@ -53,8 +54,8 @@ const Login = () => {
                 }
             })
         };
-    
-    
+
+
     return (
         <div>
             <Header></Header>
