@@ -1,42 +1,64 @@
 import { ImageStyle, RestaurantDetails, RestaurantSlider, RestaurantDetailsCard, Wrapper } from "./RestaurantHeader.styles"
+import {FiMapPin } from "react-icons/fi"
+import { BsTelephone } from "react-icons/bs"
+import { RiComputerLine } from "react-icons/ri"
 
-const RestaurantHeader = () => {
+const RestaurantHeader = props => {
+
+    console.log(props.image)
+    const numberAboveFour = () => {
+        const rating = Math.floor(Math.random() * (5 * 10 - 1 * 10) + 1 * 10) / (1 * 10);
+        if (rating > 3.8) {
+            console.log(rating)
+            return rating;
+        } else {
+            console.log(rating)
+            return 3.8;
+
+        }
+    }
+    const category = () => {
+        if (props.category === "A") return 'Asian';
+        if (props.category === "I") return 'Italian';
+        if (props.category === "B") return 'Burger';
+        if (props.category === "V") return 'Vegetarian';
+    }
+
     return (
 
         <div>
             <Wrapper>
                 <ImageStyle>
-                <img src="/images/icons/restaurant-header.png" />
+                <img src={props.image} />
                 </ImageStyle>
             <RestaurantSlider>
-                <h1>Läderach Chocolatier Suisse</h1>
-                <p>Chocolatiers & Shops</p>
+                <h1>{props.name}</h1>
+                <p>{category()}</p>
                 <div>
                     <div>
-                    <img src="images/icons/star-full.png"/>
-                    <img src="images/icons/star-full.png"/>
-                    <img src="images/icons/star-full.png"/>
-                    <img src="images/icons/star-half.png"/>
-                    <img src="images/icons/star-empty.png"/>
+                        <img className="stars"
+                            src="/images/icons/5stars_100px.png" 
+                            style={{width: `calc(100px * ${numberAboveFour() / 5})`}}>
+                        </img>
                     </div>
-                    <p>68 reviews</p>
+                    <p>{Math.floor(Math.random() * 100)} Reviews</p>
                 </div>
             </RestaurantSlider>
                 <RestaurantDetailsCard>
                     <div>
-                        <img src="images/icons/map.png"/>
+                        <img src="/images/icons/map.png"/>
                     </div>
                     <RestaurantDetails>
                         <div>
-                        <img src="images/icons/pin.svg"/>
-                        <p>Bahnhofstrasse 106</p>
+                        <FiMapPin />
+                        <p>{props.street}</p>
                         </div>
                         <div>
-                        <img src="images/icons/phone.svg"/>
-                        <p>+41 44 211 53 72</p>
+                        <BsTelephone />
+                        <p>{props.telephone}</p>
                         </div>
                         <div>
-                        <img src="images/icons/laptop.png"/>
+                        <RiComputerLine />
                         <p>laederach.com</p>
                         </div>
                     </RestaurantDetails>

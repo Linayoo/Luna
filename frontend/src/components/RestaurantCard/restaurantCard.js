@@ -1,9 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { MainStyle, StyledHeader, RestaurantCardContainer, Img, Stars} from "./RestaurantCard.styles"
-
 
 
 const RestaurantCard = (props) => {
 
+    const navigate = useNavigate();
     const numberAboveFour = () => {
         const rating = Math.floor(Math.random() * (5 * 10 - 1 * 10) + 1 * 10) / (1 * 10);
         if (rating > 3.8) {
@@ -31,7 +32,8 @@ const RestaurantCard = (props) => {
             </MainStyle>
             <Img>
             <img src={props.restaurantProps.image}/>       
-            </Img>    
+            </Img>
+            <button id={props.restaurantProps.id} onClick={e => navigate(`restaurant/${e.target.id}`)}>See Restaurant</button>
         </RestaurantCardContainer>
       )
   
