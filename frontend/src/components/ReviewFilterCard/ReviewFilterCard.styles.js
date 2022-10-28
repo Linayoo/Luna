@@ -13,6 +13,7 @@ margin-top: 15px;
 
 h3, h4 {
    color: #E47D31;
+   width: 130px;
 }
 
 p {
@@ -119,6 +120,8 @@ export const StyledHeader = styled.div`
         margin-top: -11px;
     }
 
+    
+
     p {
         color: #4C4C4C;
         font-size: 14px;
@@ -138,6 +141,13 @@ export const TimeStamp = styled.div`
     font-weight: 300;
     font-size: 14px;
     line-height: 16px;
+    width: 80px;
+   }
+`;
+
+export const ImgStyle = styled.div`
+   img {
+    height: 75px;
    }
 `;
 
@@ -161,6 +171,10 @@ export const MainStyle = styled.div`
         font-weight: 700;
     }
 `;
+
+
+
+
 
 
 

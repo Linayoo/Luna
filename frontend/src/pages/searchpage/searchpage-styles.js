@@ -47,19 +47,25 @@ height: 100vh;
 
 
 export const Grid = styled.div`
-  margin-left: 10%;
+  margin-left: 15%;
   margin-top: 50px;
   display: grid;
-  height: 100px;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 50px;
-  width: 80%;
+  grid-template-rows: 450px;
+  grid-row-gap: 20px;
+  width: 70%;
+  height: 100vh;
 `;
 
-export const Flex = styled.div`
-  display: flex;
-  justify-content: center;
+
+
+
+export const OverFlow= styled.div`
+overflow-y: auto;
+height: 100vh;
 `;
+
+
 
 
 

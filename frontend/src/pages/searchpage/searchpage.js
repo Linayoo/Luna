@@ -4,7 +4,7 @@ import UserCard from "../../components/UserCard/UserCard"
 import ReviewCard from "../../components/ReviewCard/ReviewCard"
 import SearchBar from "../../components/SearchBar/SearchBar"
 import RestaurantCard from "../../components/RestaurantCard/restaurantCard"
-import { ButtonContainer, Line, MainStyle, Grid, } from "./searchpage-styles"
+import { ButtonContainer, Line, MainStyle, Grid, OverFlow } from "./searchpage-styles"
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -83,6 +83,7 @@ const SearchPage = () => {
 
 
     }, []);
+
     return (
         <div>
         <Header></Header>
@@ -98,7 +99,7 @@ const SearchPage = () => {
         <Line>
             <hr/>
         </Line>
-
+        <OverFlow>
         <Grid>
             {users.map((user) => {
                         if(render === 'users') {
@@ -112,16 +113,17 @@ const SearchPage = () => {
                     }
                 })}
 
+
             {reviews.map((review) => {
                     if(render == "reviews") {
-                        return <ReviewCard reviewProps={review} comment={comments.text_content}/>;
+                        return <ReviewCard reviewProps={review} commentProp={comments[0]}/>;
                     }
                 })}
              
                  
 
         </Grid>
-
+        </OverFlow>
         </MainStyle>
 
         <Footer></Footer>

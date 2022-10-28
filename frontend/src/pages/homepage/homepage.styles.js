@@ -24,7 +24,7 @@ export const SearchContainer = styled.div`
     position: absolute;
     z-index: 0;
     width: 100%;
-    height: 25%;
+    height: 30%;
  }
  form {
     display: flex;
@@ -62,16 +62,19 @@ export const FormContainer = styled.div`
 display: flex;
 justify-content: center;
 input, button {
-    margin-top: 70px;
+    margin-top: 90px;
 }
 `;
 
 export const BestRated = styled.div`
-display: flex;
-justify-content: center;
-margin-top: 210px;
+/* display: flex;
+justify-content: center; */
+margin-top: 310px;
 font-size: 24px;
 color:#4C4C4C;
+z-index: -3;
+position: relative;
+left: 40%;
 
 
  p{
@@ -95,13 +98,26 @@ color:#4C4C4C;
 
 export const Grid = styled.div`
   margin-left: 10%;
-  margin-top: 50px;
+  margin-top: 2%;
+  position:
+  z-index: 0;
   display: grid;
-  height: 100px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 50px;
   width: 80%;
+  height: 100%;
 `;
+
+
+export const OverFlow= styled.div`
+overflow-y: auto;
+height: 100vh;
+`;
+
+
+
+
+
 
 
 

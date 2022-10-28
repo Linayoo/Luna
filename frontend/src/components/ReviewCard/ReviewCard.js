@@ -5,7 +5,7 @@ const ReviewCard = (props) => {
       return (
         <ReviewCardContainer>
             <StyledHeader>
-                <img src="/images/icons/profile.png"/>
+                <img src={props.reviewProps.creator.profile_pic}/>
                 <div>
                 <h3>{props.reviewProps.creator.first_name + " " + props.reviewProps.creator.last_name }</h3>
                 <p>6 reviews in total</p>
@@ -33,8 +33,8 @@ const ReviewCard = (props) => {
             <Footer>
                 <StyledP>Latest Comments</StyledP>
                 <div>
-                <h4>Colin Wirz</h4>
-                <p>Actually you have no taste!</p>
+                <h4>Miri Yoo</h4>
+                <p>{props.commentProp.text_content}</p>
                 </div>
                 <div>
                 <h4>Laurent Meyer</h4>

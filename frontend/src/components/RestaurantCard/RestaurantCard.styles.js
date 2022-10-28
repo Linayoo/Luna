@@ -81,7 +81,7 @@ export const Stars = styled.div`
 
 export const Img = styled.div`
   img {
-    height: 272px;
+    height: 277px;
     width: 271px;
     max-width:100%;
     max-height:100%;

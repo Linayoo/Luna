@@ -1,6 +1,6 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
-import { SearchBtn, SearchContainer, FormContainer, BestRated, Grid } from "./homepage.styles"
+import { SearchBtn, SearchContainer, FormContainer, BestRated, Grid, OverFlow} from "./homepage.styles"
 import RestaurantCard from "../../components/RestaurantCard/restaurantCard"
 import { useEffect } from "react";
 import { useState } from "react";
@@ -31,6 +31,7 @@ const HomePage = () => {
     return (
         <div>
             <Header></Header>
+            
                 <SearchContainer>
                 <img src="/images/icons/homepage.png"/>
                 <FormContainer>
@@ -47,6 +48,7 @@ const HomePage = () => {
                         </form>
                 </FormContainer>
                 </SearchContainer>
+                <OverFlow>
                 <BestRated>
                 <p>BEST RATED RESTAURANTS</p>
                 </BestRated>
@@ -58,8 +60,10 @@ const HomePage = () => {
                         }
                     })}
                 </Grid>
+                
             <Footer></Footer>
-        </div>
+            </OverFlow>
+            </div>
     )
 }
 
