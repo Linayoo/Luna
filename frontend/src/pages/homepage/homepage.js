@@ -1,33 +1,39 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
-import { SearchBtn, SearchContainer, FormContainer, BestRated } from "./homepage.styles"
+import { SearchBtn, SearchContainer, FormContainer, BestRated, Grid } from "./homepage.styles"
+import RestaurantCard from "../../components/RestaurantCard/restaurantCard"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
 
 
 const HomePage = () => {
-
+    const [restaurants, setRestaurants] = useState([]);
     const localToken = localStorage.getItem("token");
-    // const token = useSelector(state => state.login.token) -> when you refresh the page, you loose the store state!
-    console.log(localToken)
 
-    // Get all restaurants
+    useEffect(() => {
+          const config = {
+              method: "GET",
+              headers: new Headers ({
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${localToken}`
+              })
+          };
+    // restaurant fetch
 
-    const fetchRestaurants = () => {
-        //const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/"
-        const url = "http://localhost:8001/backend/api/restaurants/"
-        const config = {
-            method: "GET",
-            headers: new Headers({
-                "Authorization": `Bearer ${localToken}`
-            })
-        }
-        fetch(url, config)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => console.log(error))
-    }
+ 
+    fetch("https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/", config).then(response => {
+        return response.json();
+        
+    }).then(data => {
+        console.log(data)
+        data.forEach((result) => {
+            setRestaurants(oldArray => [...oldArray, result]);
+        });
+    });
 
+
+    }, []);
     return (
         <div>
             <Header></Header>
@@ -49,8 +55,14 @@ const HomePage = () => {
             </SearchContainer>
             <BestRated>
             <p>BEST RATED RESTAURANTS</p>
-            <button onClick={fetchRestaurants}>My Kebab Place</button>
             </BestRated>
+            <Grid>
+            {restaurants.map((restaurant) => {
+                    if(restaurant) {
+                        return <RestaurantCard restaurantProps={restaurant}/>;
+                    }
+                })}
+            </Grid>
             <Footer></Footer>
         </div>
     )

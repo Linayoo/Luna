@@ -14,6 +14,14 @@ button {
     font-size: 20px;
     color:  #4C4C4C;
     width: 200px;
+    padding-bottom: 17px;
+    border: 3px solid transparent;
+}
+button:focus, button:active {
+  border-bottom: 4px solid #E47D31;
+
+  
+    
 }
 
 `;
@@ -23,7 +31,7 @@ display: flex;
 justify-content: center;
 hr {
     width: 630px;
-    margin-top: 13px;
+    margin-top: 0px;
     height: 2px;
     background-color: #D8D8D8;
     border: none;
