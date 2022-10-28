@@ -96,6 +96,7 @@ export const StyledHeader = styled.div`
         margin-top: -11px;
     }
 
+
     p {
         color: #4C4C4C;
         font-size: 14px;
@@ -114,6 +115,8 @@ export const Footer = styled.div`
         line-height: 16px;
     }
 `;
+
+
 
 
 export const MainStyle = styled.div`

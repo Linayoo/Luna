@@ -5,15 +5,15 @@ const UserCard = (props) => {
       return (
         <ReviewCardContainer>
             <StyledHeader>
-                <img src="/images/icons/profile.png"/>
+                <img src={props.userProps.profile_pic}/>
                 <div>
                 <h3>{props.userProps.first_name + " " + props.userProps.last_name}</h3>
-                <p>6 reviews in total</p>
+                <p>{Math.floor(Math.random() * 100)} reviews in total</p>
                 </div>
             </StyledHeader>
             <hr/>
             <MainStyle>
-                 Im professional photographer with an eye for details in every thing I do in my live. Every time a pass by a nice restaurant i have to stop and take notes... 
+                {props.userProps.thing_i_love}
                 <button> read more</button>
             </MainStyle>
         </ReviewCardContainer>

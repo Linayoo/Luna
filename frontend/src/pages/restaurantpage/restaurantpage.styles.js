@@ -85,3 +85,9 @@ export const Flex = styled.div`
  justify-content: center;
  background-color: #F8F8F8;;
 `
+
+export const OverFlow= styled.div`
+overflow-y: auto;
+height: 100vh;
+`;
+

@@ -26,7 +26,7 @@ const RestaurantCard = (props) => {
             <Stars>
                 <img className="stars" src="/images/icons/5stars_100px.png" style={{width: `calc(100px * ${numberAboveFour() / 5})`}}>
                 </img>
-                <p>reviews: {Math.floor(Math.random() * 100)}</p>
+                <p>reviews: {Math.floor(Math.random() * 30)}</p>
             </Stars>
             </MainStyle>
             <Img>
