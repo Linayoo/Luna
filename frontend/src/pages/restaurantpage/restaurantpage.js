@@ -2,12 +2,21 @@ import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import RestaurantHeader from "../../components/RestaurantHeader/RestaurantHeader"
 import ReviewFilterCard from "../../components/ReviewFilterCard/ReviewFilterCard"
-import { FilterSection, WriteReviewSection, Flex } from "./restaurantpage.styles"
+import { FilterSection, WriteReviewSection, Flex, OverFlow } from "./restaurantpage.styles"
+import { useState, useSelector } from "react"
+import { useEffect } from "react"
+import { AiOutlineClockCircle } from "react-icons/ai"
+import { useParams } from "react-router-dom"
+import { GrMoney } from "react-icons/gr"
+
 
 const RestaurantPage = () => {
     const stateToken = useSelector(state => state.login.token)
     const [reviews, setReviews] = useState([]);
     const localToken = localStorage.getItem("token");
+    const [restaurantData, setRestaurantData] = useState('');
+    const { id } = useParams();
+  
 
     console.log(reviews)
 
@@ -31,27 +40,17 @@ const RestaurantPage = () => {
                   setReviews(oldArray => [...oldArray, result]);
               });
           });
-  
-      }, []);
 
-    const [restaurantData, setRestaurantData] = useState('');
-    const { id } = useParams();
-    const localToken = localStorage.getItem("token");
-   
-    useEffect(() => {
-            const config = {
-                method: "GET",
-                headers: new Headers ({
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localToken}`
-                })
-            };
-        fetch(`https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/${id}`, config).then(response => {
+          fetch(`https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/${id}`, config).then(response => {
             return response.json();
             
         }).then(data => setRestaurantData(data))
-    }, []);
+  
+      }, []);
 
+   
+   
+ 
     return (
         <div>
             <Header></Header>
