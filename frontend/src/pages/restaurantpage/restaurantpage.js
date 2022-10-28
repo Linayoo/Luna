@@ -5,6 +5,7 @@ import ReviewFilterCard from "../../components/ReviewFilterCard/ReviewFilterCard
 import { FilterSection, WriteReviewSection, Flex } from "./restaurantpage.styles"
 
 const RestaurantPage = () => {
+   
     return (
         <div>
             <Header></Header>

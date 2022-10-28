@@ -1,9 +1,9 @@
 import { LoginContainer } from "./Login.styles"
 import { useDispatch } from "react-redux";
+import { addUser, addToken, addRefreshToken } from "../../redux/loginSlice";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { LoginBtn, FormContainer } from "./Login.styles";
-import { addToken } from "../../redux/loginSlice";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
@@ -13,7 +13,6 @@ const Login = () => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [token, setToken] = useState('');
 
     const handleEmailChange = (e) => {
       setEmail(e.target.value)
@@ -40,22 +39,23 @@ const Login = () => {
            body: JSON.stringify(jsBody)
         }
 
-        fetch(url, config).then((response) => {
-            if (response.status === 200) {
-                    navigate('/home')
-                    return response.json()
-                } else {
-                    alert('Something went wrong')
+        fetch(url, config)
+        .then(response => response.json())
+        .then(data => {
+            if (data.access) {
+                console.log(data.access)
+                localStorage.setItem("token", data.access)
+                dispatch(addToken(data.access))
+                dispatch(addRefreshToken(data.refresh))
+                dispatch(addUser(data.user))
+                navigate('/home')
+            } else {
+                alert ('Error, please check your credentials!')
                 }
-          }).then(data => {
-            localStorage.setItem("token", data.access)
-            setToken(data.access)
-            dispatch(addToken(data.access))
-            console.log(data)
-          }
-        )
-    };
-    console.log(token)
+            })
+        };
+
+
     return (
         <div>
             <Header></Header>

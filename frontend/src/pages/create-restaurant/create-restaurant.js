@@ -2,23 +2,75 @@ import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import { Create, Flex, InputFlex, SearchBtn, Background, Btn } from "./create-restaurant.styles"
 import { useState } from "react"
-import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const CreateRestaurant = () => {
-    const [formData, setFormData] = useState(
-        {name: "", category: "", country: "", street: "", city: "", zip: "", website: "", phone: "", email: "", hours: "", price: "", file: null }
-    )
 
-    console.log(formData)
-    
+    const [restaurantImage, setRestaurantImage] = useState(null)
+    const [created, setCreated] = useState(false)
+    const [restaurantData, setRestaurantData] = useState(
+        {name: "",
+        category: "",
+        country: "",
+        street: "",
+        city: "",
+        zip: "",
+        website: "",
+        phone: "",
+        email: "",
+        opening_hours: "",
+        price_level: ""
+        }
+    )
+    const navigate = useNavigate();
+    const localToken = localStorage.getItem("token");
     const handleChange = (event) => {
-        setFormData(prevFormData => {
+        setRestaurantData(prevFormData => {
             return {
                 ...prevFormData,
                 [event.target.name]: event.target.value
             }
         })
+    }
+
+    const handleUpload = e => {
+        const imageUrl = e.target.files;
+        console.log(e.target.files)
+        setRestaurantImage(imageUrl[0]);
+      }
+      
+      const createRestaurant = e => {
+        e.preventDefault();
+        const formData = new FormData();       
+        formData.append("name", restaurantData.name);
+        formData.append("category", restaurantData.category);
+        formData.append("country", restaurantData.country);
+        formData.append("street", restaurantData.street);
+        formData.append("city", restaurantData.city);
+        formData.append("zip", restaurantData.zip);
+        formData.append("website", restaurantData.website);
+        formData.append("phone", restaurantData.phone);
+        formData.append("email", restaurantData.email);
+        formData.append("opening_hours", restaurantData.opening_hours);
+        formData.append("price_level", restaurantData.price_level);
+        formData.append("image", restaurantImage);
+        const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/new/"
+        const config = {
+            method: "POST",
+            headers: {           
+                "Authorization": `Bearer ${localToken}`
+            },
+            body: formData,
+        }
+        fetch(url, config)
+            .then(response => response.json())
+            .then(data => {
+                setCreated(true)
+                setTimeout(() => navigate('/home'), 2000)
+                return data.response
+            })
+            .catch(error => console.log(error))
     }
 
    
@@ -39,17 +91,17 @@ const CreateRestaurant = () => {
                 </label>
                 <label>
                 Category *
-                <select value={formData.category} name="category" onChange={handleChange} required>
+                <select value={restaurantData.category} name="category" onChange={handleChange} required>
                     <option value="">Select a value ...</option>
-                    <option value="italian">Italian</option>
-                    <option value="peruvian">Peruvian</option>
-                    <option value="japanese">Japanese</option>
-                    <option value="vietnamese">Vietnamese</option>
+                    <option value="V">Vegetarian</option>
+                    <option value="I">Italian</option>
+                    <option value="B">Burger</option>
+                    <option value="A">Asian</option>
                 </select>
                 </label>
                 <label>
                 Country *
-                <select value={formData.country} name="country" onChange={handleChange} required>
+                <select value={restaurantData.country} name="country" onChange={handleChange} required>
                     <option value="">Select a value ...</option>
                     <option value="switzerland">Switzerland</option>
                     <option value="germany">Germany</option>
@@ -86,11 +138,11 @@ const CreateRestaurant = () => {
                 <label>
                 <p>Details</p>
                    Opening hours *
-                <input type="text" name="hours" onChange = {handleChange} required ></input>
+                <input type="text" name="opening_hours" onChange = {handleChange} required ></input>
                 </label>
                 <label>
                 Price level 
-                <select value={formData.price} name="price" onChange={handleChange}>
+                <select value={restaurantData.price_level} name="price_level" onChange={handleChange}>
                     <option value="">Select a value ...</option>
                     <option value="$">$</option>
                     <option value="$$">$$</option>
@@ -98,15 +150,16 @@ const CreateRestaurant = () => {
                     <option value="$$$$">$$$$</option>
                 </select>
                 </label>
-                <input id="select" type="file" name="file"  onChange = {handleChange} style={{ display: 'none' }}></input>
+                {/* <input id="select" type="file" name="file"  onChange = {handleChange} style={{ display: 'none' }}></input> */}
+                {/* Image */}
+                <input id="select" multiple type='file' name='image' accept='image/' onChange={e => handleUpload(e)}></input>
                 <label htmlFor="select">
-                   Image
-                    <Btn>
+                    {/* <Btn>
                      <button>CHOOSE A FILE...</button>
-                     </Btn>
+                     </Btn> */}
                 </label>
                 <SearchBtn>
-                <button type="submit">Search</button>
+                <button type={"submit"} onClick={createRestaurant}>{created ? 'SUCCESS!' : 'Created'}</button>
                 </SearchBtn>
             </form>
             </Flex>

@@ -23,7 +23,6 @@ class UserAdmin(UserAdmin):
         ('Personal info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions')}),
         ('Important dates', {'fields': ('last login', 'date_joined')}),
-        ('Social Status', {'fields': ('following', 'followers')}),
         ('Profile', {'fields': 'profile_pic'})
     )
 
