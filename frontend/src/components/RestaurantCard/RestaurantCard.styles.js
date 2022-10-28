@@ -10,10 +10,18 @@ height: 410px;
 border-top: #E47D31 8px solid;
 border-color: #EBEBEB 1px solid;
 border-radius: 3px;
+img.stars {
+    height: 20px;
+    object-fit: cover;
+    object-position: 0% 0%;
+}
 img {
     margin-right: 0px;
     margin-left: 0px;
-    margin-top: 5px
+    margin-top: 5px;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
 }
 
 div > div {
