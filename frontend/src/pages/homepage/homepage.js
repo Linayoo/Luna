@@ -1,33 +1,39 @@
 import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
-import { SearchBtn, SearchContainer, FormContainer, BestRated } from "./homepage.styles"
-import { useState } from "react"
+import { SearchBtn, SearchContainer, FormContainer, BestRated, Grid } from "./homepage.styles"
 import RestaurantCard from "../../components/RestaurantCard/restaurantCard"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
 
 
 const HomePage = () => {
-
     const [restaurants, setRestaurants] = useState([]);
-    console.log(restaurants)
     const localToken = localStorage.getItem("token");
-    console.log(localToken)
 
-    // Get all restaurants
+    useEffect(() => {
+          const config = {
+              method: "GET",
+              headers: new Headers ({
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${localToken}`
+              })
+          };
+    // restaurant fetch
 
-    const fetchRestaurants = () => {
-        const url = "https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/"
-        const config = {
-            method: "GET",
-            headers: new Headers({
-                "Authorization": `Bearer ${localToken}`
-            })
-        }
-        fetch(url, config)
-            .then(response => response.json())
-            .then(data => setRestaurants(data))
-            .catch(error => console.log(error))
-    }
+ 
+    fetch("https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/", config).then(response => {
+        return response.json();
+        
+    }).then(data => {
+        console.log(data)
+        data.forEach((result) => {
+            setRestaurants(oldArray => [...oldArray, result]);
+        });
+    });
 
+
+    }, []);
     return (
         <div>
             <Header></Header>
@@ -49,9 +55,14 @@ const HomePage = () => {
             </SearchContainer>
             <BestRated>
             <p>BEST RATED RESTAURANTS</p>
-            <button onClick={fetchRestaurants}>My Kebab Place</button>
-            {restaurants.map(elem => <RestaurantCard name={elem.name} address={elem.street} image={elem.image}/>)}
             </BestRated>
+            <Grid>
+            {restaurants.map((restaurant) => {
+                    if(restaurant) {
+                        return <RestaurantCard restaurantProps={restaurant}/>;
+                    }
+                })}
+            </Grid>
             <Footer></Footer>
         </div>
     )

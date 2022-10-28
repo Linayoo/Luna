@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 
 export const RestaurantCardContainer = styled.div`
+display: flex;
+flex-direction: column;
 background-color: white;
 width: 271px;
-height: 190px;
-padding: 11px;
+height: 410px;
 border-top: #E47D31 8px solid;
 border-color: #EBEBEB 1px solid;
 border-radius: 3px;
@@ -15,13 +16,27 @@ img {
     margin-top: 5px
 }
 
-h3, h4 {
-   color: #E47D31;
+div > div {
+    display: flex;
+    align-items: center;
 }
 
-p {
-   
-    font-size: 14px;
+div > img:first-of-type {
+}
+
+div > img:last-of-type {
+    margin-right: 50px;
+}
+
+
+div > p {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+    color: #4C4C4C;
+
 }
 
 `;
@@ -29,33 +44,40 @@ p {
 
 export const StyledHeader = styled.div`
     display: flex;
-    height: 50px;
-    margin-left: -11px;
-    img {
-        margin-right: 5px;
-        margin-top: -11px;
+    flex-direction: column;
+    padding: 13px;
+    p:first-of-type {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    color: #4C4C4C;
+    margin-top: 5px;
+    margin-bottom: 5px;
     }
-
-    p {
-        color: #4C4C4C;
-        font-size: 14px;
-        font-weight: 700;
-        margin-top: 5px;
-    }
+    
 `;
 
 
 export const MainStyle = styled.div`
-    font-size: 14px;
-    h3 {
-        padding-bottom: 10px;
-    }
+  
+    
+`;
 
-    button {
-        background-color: white;
-        border: none;
-        color: #E47D31;
-        font-weight: 700;
-        }
-    }
+
+export const Stars = styled.div`
+  margin-left: 10px;
+    
+`;
+
+
+export const Img = styled.div`
+  img {
+    height: 272px;
+    width: 271px;
+    max-width:100%;
+    max-height:100%;
+    margin-top: 18px;
+  }
+    
 `;

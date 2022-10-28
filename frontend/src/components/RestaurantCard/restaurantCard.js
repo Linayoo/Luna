@@ -1,26 +1,27 @@
-import { MainStyle, StyledHeader, RestaurantCardContainer} from "./RestaurantCard.styles"
+import { MainStyle, StyledHeader, RestaurantCardContainer, Img, Stars} from "./RestaurantCard.styles"
 
-const RestaurantCard = ({ name, address, image }) => {
 
-    console.log(image)
 
+const RestaurantCard = (props) => {
       return (
         <RestaurantCardContainer>
             <StyledHeader>
-                <div>
-                <p>{name}</p>
-                <p>{address}</p>
-                </div>
-
+                <p>{props.restaurantProps.name}</p>
+                <p>{props.restaurantProps.street}</p>
             </StyledHeader>
-            <div>
+            <MainStyle>
+            <Stars>
                 <img src="/images/icons/star-full.png"/> 
                 <img src="/images/icons/star-full.png"/>
                 <img src="/images/icons/star-full.png" /> 
-                </div>
-            <MainStyle>
-            <img src={image} />           
+                <img src="/images/icons/star-full.png" /> 
+                <img src="/images/icons/star-half.png" /> 
+                <p>46</p>
+            </Stars>
             </MainStyle>
+            <Img>
+            <img src={props.restaurantProps.image}/>       
+            </Img>    
         </RestaurantCardContainer>
       )
   
