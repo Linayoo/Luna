@@ -2,7 +2,6 @@ import Header from "../../components/Header/Header"
 import Footer from "../../components/Footer/Footer"
 import { SearchBtn, SearchContainer, FormContainer, BestRated, Grid } from "./homepage.styles"
 import RestaurantCard from "../../components/RestaurantCard/restaurantCard"
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -37,32 +36,33 @@ const HomePage = () => {
     return (
         <div>
             <Header></Header>
-            <SearchContainer>
-            <img src="/images/icons/homepage.png"/>
-            <FormContainer>
-                    <form>
-                        <input 
-                            autoComplete="off"
-                            type="text" 
-                            name={"search"} 
-                            placeholder="Search ..."
-                        />
-                        <SearchBtn>
-                        <button type="submit">Search</button>
-                        </SearchBtn>
-                    </form>
-            </FormContainer>
-            </SearchContainer>
-            <BestRated>
-            <p>BEST RATED RESTAURANTS</p>
-            </BestRated>
-            <Grid>
-            {restaurants.map((restaurant) => {
-                    if(restaurant) {
-                        return <RestaurantCard restaurantProps={restaurant}/>;
-                    }
-                })}
-            </Grid>
+                <SearchContainer>
+                <img src="/images/icons/homepage.png"/>
+                <FormContainer>
+                        <form>
+                            <input 
+                                autoComplete="off"
+                                type="text" 
+                                name={"search"} 
+                                placeholder="Search ..."
+                            />
+                            <SearchBtn>
+                            <button type="submit">Search</button>
+                            </SearchBtn>
+                        </form>
+                </FormContainer>
+                </SearchContainer>
+                <BestRated>
+                <p>BEST RATED RESTAURANTS</p>
+                </BestRated>
+                <Grid>
+                {restaurants.map((restaurant, index) => {
+                    if (index > 3) return
+                        if(restaurant) {
+                            return <RestaurantCard restaurantProps={restaurant}/>;
+                        }
+                    })}
+                </Grid>
             <Footer></Footer>
         </div>
     )

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const SearchBtn = styled.div`
 button {
  background-color: #E47D31;

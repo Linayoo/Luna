@@ -3,6 +3,19 @@ import { MainStyle, StyledHeader, RestaurantCardContainer, Img, Stars} from "./R
 
 
 const RestaurantCard = (props) => {
+
+    const numberAboveFour = () => {
+        const rating = Math.floor(Math.random() * (5 * 10 - 1 * 10) + 1 * 10) / (1 * 10);
+        if (rating > 3.8) {
+            console.log(rating)
+            return rating;
+        } else {
+            console.log(rating)
+            return 3.8;
+
+        }
+    }
+
       return (
         <RestaurantCardContainer>
             <StyledHeader>
@@ -11,12 +24,9 @@ const RestaurantCard = (props) => {
             </StyledHeader>
             <MainStyle>
             <Stars>
-                <img src="/images/icons/star-full.png"/> 
-                <img src="/images/icons/star-full.png"/>
-                <img src="/images/icons/star-full.png" /> 
-                <img src="/images/icons/star-full.png" /> 
-                <img src="/images/icons/star-half.png" /> 
-                <p>46</p>
+                <img className="stars" src="/images/icons/5stars_100px.png" style={{width: `calc(100px * ${numberAboveFour() / 5})`}}>
+                </img>
+                <p>reviews: {Math.floor(Math.random() * 100)}</p>
             </Stars>
             </MainStyle>
             <Img>

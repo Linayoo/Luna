@@ -1,3 +1,5 @@
+from django.conf.urls.static import static
+from project import settings
 from django.contrib import admin
 from django.urls import path, include
 from drf_yasg import openapi
