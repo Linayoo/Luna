@@ -11,27 +11,22 @@ const HomePage = () => {
     const localToken = localStorage.getItem("token");
 
     useEffect(() => {
-          const config = {
-              method: "GET",
-              headers: new Headers ({
-                  "Content-Type": "application/json",
-                  "Authorization": `Bearer ${localToken}`
-              })
-          };
-    // restaurant fetch
-
- 
-    fetch("https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/", config).then(response => {
-        return response.json();
-        
-    }).then(data => {
-        console.log(data)
-        data.forEach((result) => {
-            setRestaurants(oldArray => [...oldArray, result]);
+            const config = {
+                method: "GET",
+                headers: new Headers ({
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localToken}`
+                })
+            };
+        fetch("https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/", config).then(response => {
+            return response.json();
+            
+        }).then(data => {
+            console.log(data)
+            data.forEach((result) => {
+                setRestaurants(oldArray => [...oldArray, result]);
+            });
         });
-    });
-
-
     }, []);
     return (
         <div>

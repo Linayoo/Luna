@@ -3,13 +3,41 @@ import Footer from "../../components/Footer/Footer"
 import RestaurantHeader from "../../components/RestaurantHeader/RestaurantHeader"
 import ReviewFilterCard from "../../components/ReviewFilterCard/ReviewFilterCard"
 import { FilterSection, WriteReviewSection, Flex } from "./restaurantpage.styles"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { AiOutlineClockCircle } from "react-icons/ai"
+import { GrMoney } from "react-icons/gr"
 
 const RestaurantPage = () => {
+
+    const [restaurantData, setRestaurantData] = useState('');
+    const { id } = useParams();
+    const localToken = localStorage.getItem("token");
    
+    useEffect(() => {
+            const config = {
+                method: "GET",
+                headers: new Headers ({
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localToken}`
+                })
+            };
+        fetch(`https://luna-tuna.propulsion-learn.ch/backend/api/restaurants/${id}`, config).then(response => {
+            return response.json();
+            
+        }).then(data => setRestaurantData(data))
+    }, []);
+
     return (
         <div>
             <Header></Header>
-            <RestaurantHeader></RestaurantHeader>
+            <RestaurantHeader image={restaurantData.image} 
+                              name={restaurantData.name}
+                              category={restaurantData.category}
+                              street={restaurantData.street}
+                              telephone={restaurantData.phone}
+                              >
+                              </RestaurantHeader>
            <Flex>
             <FilterSection>
                 <form>
@@ -28,12 +56,12 @@ const RestaurantPage = () => {
             </FilterSection>
             <WriteReviewSection>
                 <div>
-                    <img src="images/icons/clock.svg"/>
-                    <p>Monday-Friday 9:00 am - 8:00 pm</p>
+                    <AiOutlineClockCircle />
+                    <p>{restaurantData.opening_hours}</p>
                 </div>
                 <hr/>
                 <div>
-                    <img src="images/icons/money.png"/>
+                    <GrMoney />
                     <p>Price level: $$$</p>
                 </div>
                 <div>

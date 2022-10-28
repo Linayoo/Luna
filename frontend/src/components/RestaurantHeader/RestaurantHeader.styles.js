@@ -49,7 +49,6 @@ img {
 export const RestaurantSlider = styled.div`
 font-family: 'Helvetica';
 color: white;
-background-color: rgba(0, 0, 0, 0.5);
 height: 204px;
 position: absolute;
 z-index: 1;
@@ -79,5 +78,13 @@ p {
     font-size: 24px;
     line-height: 28px;
 }
+
+img {
+    margin-top: .2em;
+    height: 20px;
+    object-fit: cover;
+    object-position: 0% 0%;
+}
+
 `;
 
