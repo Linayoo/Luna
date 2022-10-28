@@ -1,24 +1,25 @@
 from django.conf.urls.static import static
-from project import settings
 from django.contrib import admin
 from django.urls import path, include
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from rest_framework_simplejwt import views
+from project import settings
 
 schema_view = get_schema_view(
-    openapi.Info(
-        title="Luna and Tuna API",
-        default_version='v20000000',
-        description="Luna app API documentation",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="miri.yoo.dev@gmail.com"),
-        license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-    permission_classes=[permissions.AllowAny],
+   openapi.Info(
+      title="Luna and Tuna API",
+      default_version='v20000000',
+      description="Luna app API documentation",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="miri.yoo.dev@gmail.com"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny],
 )
+
 
 urlpatterns = [
     path("backend/api/admin/", admin.site.urls),
