@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from rest_framework import filters
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, ListCreateAPIView
 from restaurants.models import Restaurant
 from restaurants.permissions import IsObjectOwnerOrAdmin
@@ -50,3 +51,12 @@ class GetUserCreatedRestaurant(ListCreateAPIView):
 # GET: Get the all the restaurants by category
 class GetRestaurantsByCategory(ListAPIView):
     pass
+
+
+# /api/restaurants/search/?search=<str:search_string>/
+# GET: Search for a Restaurant (retrieve all the users that include search_string)
+class SearchRestaurant(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = RestaurantSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name']
